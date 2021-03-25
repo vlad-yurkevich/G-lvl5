@@ -67,18 +67,18 @@ public class CompareFileServiceImpl implements CompareFileService {
 
         switch (errCode) {
             case RES_FILE_ORIG_NOT_FOUND: {
-                sErrText = "Исходный файл не найден"; break;
+                sErrText = "Original file not found"; break;
             }
             case RES_FILE_MOD_NOT_FOUND: {
-                sErrText = "Модифицированный файл не найден"; break;
+                sErrText = "Modified file not found"; break;
             }
             case RES_FILE_ORIG_EMPTY: {
-                sErrText = "Исходный файл пуст. Обработка невозможна"; break;
+                sErrText = "Original file is empty. Processing is not possible"; break;
             }
             case RES_FILE_MOD_EMPTY: {
-                sErrText = "Модифицированный файл пуст. Обработка невозможна"; break;
+                sErrText = "Modified file is empty. Processing is not possible"; break;
             }
-            default: sErrText = "Неопознанная ошибка";
+            default: sErrText = "Unidentified error";
         }
         return sErrText;
     }

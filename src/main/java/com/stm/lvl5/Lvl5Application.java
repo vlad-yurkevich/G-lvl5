@@ -14,7 +14,7 @@ import java.util.List;
 @SpringBootApplication
 public class Lvl5Application implements CommandLineRunner {
 
-    static final String MSG_NO_DIFF = "Различий в файлах не найдено";
+    static final String MSG_NO_DIFF = "No differences found in the files";
 
 
     static final Logger myLogger = LogManager.getLogger(CompareFileService.class);
@@ -31,27 +31,25 @@ public class Lvl5Application implements CommandLineRunner {
     public void run(String... args) {
 
         if (args.length < 2) {
-            rootLogger.error("Приложению передано недостаточное количество параметров");
+            rootLogger.error("Insufficient number of parameters passed to the application");
             return;
         }
 
-        myLogger.info("Начинаем обработку данных");
+        myLogger.info("Starting data processing");
         int iRes = compareFileService.doCompare(args[0], args[1]);
         if (iRes != CompareFileServiceImpl.RES_OK) {
             myLogger.error(compareFileService.getErrByCode(iRes));
         } else {
-            myLogger.info("Данные успешно обработаны");
+            myLogger.info("Data processed successfully");
             List<String> diff = compareFileService.getResultCompare();
             if (diff.size() == 0) {
                 System.out.println(MSG_NO_DIFF);
             } else {
-                System.out.println("Найдены следующие расхождения с оригинальным файлом:");
+                System.out.println("The following differences were found with the original file:");
                 for (String d: diff) {
                     System.out.println(d);
                 }
             }
         }
-
     }
-
 }

@@ -18,7 +18,7 @@ class CompareFileServiceImplTest {
     void getErrByCodeGood() {
         int iGoodErrCode = CompareFileServiceImpl.RES_FILE_MOD_EMPTY;
         String s = compareFileService.getErrByCode(iGoodErrCode);
-        assertNotEquals(s, "Неопознанная ошибка");
+        assertNotEquals(s, "Unidentified error");
     }
 
     //--Получение текста по неизвестной ошибке
@@ -26,7 +26,7 @@ class CompareFileServiceImplTest {
     void getErrByCodeWrong() {
         int iWrongErrCode = -100500;
         String s = compareFileService.getErrByCode(iWrongErrCode);
-        assertEquals(s, "Неопознанная ошибка");
+        assertEquals(s, "Unidentified error");
     }
 
     //--Сравнение двух одинаковых файлов. Количество расхождений равно 0
