@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="compareFile" fileName="logs/compare.log" immediateFlush="false" append="false">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+        <File name="rootFile" fileName="logs/root.log" immediateFlush="false" append="false">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name= "com.stm.lvl5.service.CompareFileService" level="all" additivity="false">
+           <AppenderRef ref="Console"/>
+            <AppenderRef ref="compareFile"/>
+        </Logger>
+
+        <!-- Root Logger, если вдруг логируем критические ошибки  -->
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="rootFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
